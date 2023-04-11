@@ -44,7 +44,7 @@ void main(){
 	}
 	
 
-	ct[0] = bt[0];
+	ct[0] = bt[0]+at[0];
 	tat[0] = ct[0]-at[0];
 	wt[0] = tat[0]-bt[0];
 
@@ -53,11 +53,15 @@ void main(){
 		tat[i] = ct[i] - at[i];
 		wt[i] = tat[i] - bt[i];
 	}
-
+	float averageWT = 0;
+    float averageTAT = 0;
 	printf("\nProcess ArrivalTime BurstTime TurnAroudTime WaitingTime completion time\n");
 
 	for(int i  = 0;i<n;i++){
+		averageTAT += tat[i];
+        averageWT += wt[i];
 		printf("%d\t\t%d\t%d\t%d\t\t%d\t%d\n",i+1,at[i],bt[i],tat[i],wt[i],ct[i]);
 	}
-
+    printf("average waiting time = %.2f\n", averageWT/n);
+    printf("average turnaround time = %.2f\n", averageTAT/n);
 }
